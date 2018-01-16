@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.graphql-java:graphql-java-servlet:4.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.graphql-java/graphql-java-servlet/4.6.0/48bf303bfed8a69ee01053b7b8b58ffeae90903b/graphql-java-servlet-4.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.graphql-java/graphql-java-servlet/4.6.0/95506b6ffde22c4dcccd7e09618c60d27f24ad03/graphql-java-servlet-4.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
