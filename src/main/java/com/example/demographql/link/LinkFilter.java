@@ -1,4 +1,4 @@
-package com.example.demographql;
+package com.example.demographql.link;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

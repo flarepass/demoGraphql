@@ -1,6 +1,8 @@
-package com.example.demographql;
+package com.example.demographql.link;
 
 import com.coxautodev.graphql.tools.GraphQLResolver;
+import com.example.demographql.user.User;
+import com.example.demographql.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,12 +13,14 @@ import org.springframework.stereotype.Component;
 public class LinkResolver implements GraphQLResolver<Link> {
     @Autowired
     private final UserRepository userRepository;
-    @Autowired
-    private final UserDataLoader userDataLoader;
+//    @Autowired
+//    private final UserDataLoader userDataLoader;
 
-    LinkResolver(UserRepository userRepository, UserDataLoader userDataLoader) {
+    LinkResolver(UserRepository userRepository
+//            , UserDataLoader userDataLoader
+    ) {
         this.userRepository = userRepository;
-        this.userDataLoader = userDataLoader;
+//        this.userDataLoader = userDataLoader;
     }
 
 
@@ -24,6 +28,7 @@ public class LinkResolver implements GraphQLResolver<Link> {
         if (link.getUserId() == null) {
             return null;
         }
-        return userRepository.findOne(link.getUserId());
+        return link.getUser();
+//        return userRepository.findOne(link.getUserId());
     }
 }
