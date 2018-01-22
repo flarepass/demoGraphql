@@ -3,18 +3,20 @@ package com.example.demographql.exception;
 import graphql.ErrorType;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
+import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NotFoundException extends RuntimeException implements GraphQLError {
+public class GraphQLNotFoundException extends RuntimeException implements GraphQLError {
 
     private Map<String, Object> extensions = new HashMap<>();
 
-    public NotFoundException(String message, Long invalidBookId) {
+    public GraphQLNotFoundException(String message, Map<String, String> extraMessage) {
         super(message);
-        extensions.put(message, invalidBookId);
+        extraMessage.forEach((s, s2) -> extensions.put(s, s2));
+        extensions.put("errorCode", HttpStatus.NOT_FOUND.value());
     }
 
     @Override

@@ -74,13 +74,16 @@ public class GraphQLConfiguration {
             public List<GraphQLError> processErrors(List<GraphQLError> errors) {
                 List<GraphQLError> clientErrors =
                         errors.stream().filter(this::isClientError).collect(Collectors.toList());
+                System.out.println("clientErrors.size()" + clientErrors.size());
                 List<GraphQLError> serverErrors = errors.stream()
                         .filter(e -> !isClientError(e))
                         .map(GraphQLErrorAdapter::new)
                         .collect(Collectors.toList());
+                System.out.println("serverErrors.size()" + serverErrors.size());
                 List<GraphQLError> e = new ArrayList<>();
                 e.addAll(clientErrors);
                 e.addAll(serverErrors);
+//                GraphqlErrorHelper
                 return e;
             }
 

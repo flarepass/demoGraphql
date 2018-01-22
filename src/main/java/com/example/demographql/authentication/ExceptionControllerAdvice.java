@@ -1,13 +1,14 @@
 package com.example.demographql.authentication;
 
-import com.example.demographql.exception.NotFoundException;
-import com.example.demographql.exception.TestException;
+import com.example.demographql.exception.GraphQLAccessDeniedException;
+import com.example.demographql.test.TestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,13 +22,12 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(AccessDeniedException.class)
     public void handleEntityNotFound(AccessDeniedException exception) {
         System.out.println("aaaaa");
-        throw new NotFoundException("blabla", 100L);
+        throw new GraphQLAccessDeniedException("Access Denied", Collections.emptyMap());
     }
 
     @ExceptionHandler(TestException.class)
     public ResponseEntity<Map> handleAuxException(
             TestException exception) {
-        System.out.println("blablablabalab");
 
         final Map<String, Object> errorResponse = new LinkedHashMap<>();
         errorResponse.put("timestamp", new Date());

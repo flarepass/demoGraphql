@@ -1,10 +1,10 @@
-package com.example.demographql.exception;
+package com.example.demographql.test;
 
 /**
  * Created by wilyanto.salim on 10/3/16.
  */
 public class TestException extends RuntimeException {
-    String path;
+    private String path;
 
     public TestException() {
     }

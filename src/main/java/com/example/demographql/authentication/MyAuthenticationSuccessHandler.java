@@ -29,13 +29,13 @@ import static com.example.demographql.common.Constants.JSON_TYPE;
 @Service
 @Slf4j
 @EnableJdbcHttpSession
-public class BuzzAuthenticationSuccessHandler
+public class MyAuthenticationSuccessHandler
         extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Autowired
     private JdbcOperationsSessionRepository jdbcOperationsSessionRepository;
 
-    @Value("${buzz.session.maxinactiveinterval:360}")
+    @Value("${session.maxinactiveinterval:360}")
     private int maxInactiveInterval;
 
     @Override
@@ -43,7 +43,6 @@ public class BuzzAuthenticationSuccessHandler
                                         Authentication authentication) throws IOException,
             ServletException {
 //        removeCurrentUserActiveLoginSession(authentication);
-//        logSuccessForCurrentUser();
 //        getLoginDetail();
 
         request.getSession().setMaxInactiveInterval(maxInactiveInterval);
@@ -57,12 +56,6 @@ public class BuzzAuthenticationSuccessHandler
         response.getWriter().flush();
         response.getWriter().close();
 
-    }
-
-    private void logSuccessForCurrentUser() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
-        log.info("auth success for : " + user.toString());
     }
 
     private void getLoginDetail() {

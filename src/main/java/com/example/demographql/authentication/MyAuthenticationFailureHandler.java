@@ -14,7 +14,7 @@ import java.io.IOException;
  * on 1/18/18.
  */
 @Service
-public class BuzzAuthenticationFailureHandler implements AuthenticationFailureHandler {
+public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException,
